@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title %}ajax请求数据{% endblock %}
+{% block otherlink %}
+<script type="text/javascript" src="{{url_for('static',filename='page/ajax.js')}}"></script>
+{% endblock %}
+
+{% block body %}
+<button type="button" class="btn btn-primary jGet">发送GET请求</button>
+<button type="button" class="btn btn-primary jPost">发送POST请求</button>
+<button type="button" class="btn btn-primary jJson">发送JSON数据</button>
+{% endblock %}
