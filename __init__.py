@@ -1,6 +1,10 @@
 from werkzeug.utils import secure_filename
 from flask import *
 
+# 自己定义的后期vm状态的方法
+from server.getVmList import getVmList
+#---------------------------
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = '加密Session所需的密钥'
@@ -116,6 +120,24 @@ def show_cookies():
 def get_uploaded_file():
 	filename = request.args['filename']
 	return send_file(filename)
+
+
+# ----------------正式开始-------------------
+# vm 全部列表
+@app.route("/vmlist")
+def get_vmlist():
+	vmlist = getVmList();
+	lenN = len(vmlist)
+	return render_template('vmlist.html',vmlist=vmlist,lenN=lenN,running=False)
+# vm 运行列表
+@app.route("/runningVmList")
+def get_running_vmlist():
+	vmlist = getVmList(True);
+	lenN = len(vmlist)
+	return render_template("vmlist.html",vmlist=vmlist,lenN=lenN,running=True)
+
+
+# ----------------正式开始-------------------
 
 def before_request():
 	import glob

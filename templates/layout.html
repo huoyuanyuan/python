@@ -57,6 +57,16 @@
                         <li><a href="{{url_for('show_cookies')}}">显示cookie</a></li>
                     </ul>
                 </li>
+
+                <!-- 正式开始 -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">vm列表<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{url_for('get_vmlist')}}">所有列表</a></li>
+                        <li><a href="{{url_for('get_running_vmlist')}}">运行列表</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
